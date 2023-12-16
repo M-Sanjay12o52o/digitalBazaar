@@ -1,3 +1,4 @@
+import React from "react";
 import { formatPrice } from "../../lib/utils";
 import { Product } from "../../payload-types";
 import { format } from "date-fns";

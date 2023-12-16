@@ -9,7 +9,7 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import React from "react";
 import { Button } from "./ui/button";
-import { User } from "payload/dist/auth";
+import { User } from "@/payload-types";
 import Link from "next/link";
 import { useAuth } from "@/hooks/use-auth";
 

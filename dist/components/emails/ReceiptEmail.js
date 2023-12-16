@@ -10,81 +10,85 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReceiptEmailHtml = void 0;
+var react_1 = __importDefault(require("react"));
 var utils_1 = require("../../lib/utils");
 var date_fns_1 = require("date-fns");
 var components_1 = require("@react-email/components");
 var ReceiptEmail = function (_a) {
     var email = _a.email, date = _a.date, orderId = _a.orderId, products = _a.products;
     var total = products.reduce(function (acc, curr) { return acc + curr.price; }, 0) + 1;
-    return (React.createElement(components_1.Html, null,
-        React.createElement(components_1.Head, null),
-        React.createElement(components_1.Preview, null, "Your DigitalHippo Receipt"),
-        React.createElement(components_1.Body, { style: main },
-            React.createElement(components_1.Container, { style: container },
-                React.createElement(components_1.Section, null,
-                    React.createElement(components_1.Column, null,
-                        React.createElement(components_1.Img, { src: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/hippo-email-sent.png"), width: "100", height: "100", alt: "DigitalHippo" })),
-                    React.createElement(components_1.Column, { align: "right", style: tableCell },
-                        React.createElement(components_1.Text, { style: heading }, "Receipt"))),
-                React.createElement(components_1.Section, { style: informationTable },
-                    React.createElement(components_1.Row, { style: informationTableRow },
-                        React.createElement(components_1.Column, { style: informationTableColumn },
-                            React.createElement(components_1.Text, { style: informationTableLabel }, "EMAIL"),
-                            React.createElement(components_1.Link, { style: __assign({}, informationTableValue) }, email)),
-                        React.createElement(components_1.Column, { style: informationTableColumn },
-                            React.createElement(components_1.Text, { style: informationTableLabel }, "INVOICE DATE"),
-                            React.createElement(components_1.Text, { style: informationTableValue }, (0, date_fns_1.format)(date, "dd MMM yyyy"))),
-                        React.createElement(components_1.Column, { style: informationTableColumn },
-                            React.createElement(components_1.Text, { style: informationTableLabel }, "ORDER ID"),
-                            React.createElement(components_1.Link, { style: __assign({}, informationTableValue) }, orderId)))),
-                React.createElement(components_1.Section, { style: productTitleTable },
-                    React.createElement(components_1.Text, { style: productsTitle }, "Order Summary")),
+    return (react_1.default.createElement(components_1.Html, null,
+        react_1.default.createElement(components_1.Head, null),
+        react_1.default.createElement(components_1.Preview, null, "Your DigitalHippo Receipt"),
+        react_1.default.createElement(components_1.Body, { style: main },
+            react_1.default.createElement(components_1.Container, { style: container },
+                react_1.default.createElement(components_1.Section, null,
+                    react_1.default.createElement(components_1.Column, null,
+                        react_1.default.createElement(components_1.Img, { src: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/hippo-email-sent.png"), width: "100", height: "100", alt: "DigitalHippo" })),
+                    react_1.default.createElement(components_1.Column, { align: "right", style: tableCell },
+                        react_1.default.createElement(components_1.Text, { style: heading }, "Receipt"))),
+                react_1.default.createElement(components_1.Section, { style: informationTable },
+                    react_1.default.createElement(components_1.Row, { style: informationTableRow },
+                        react_1.default.createElement(components_1.Column, { style: informationTableColumn },
+                            react_1.default.createElement(components_1.Text, { style: informationTableLabel }, "EMAIL"),
+                            react_1.default.createElement(components_1.Link, { style: __assign({}, informationTableValue) }, email)),
+                        react_1.default.createElement(components_1.Column, { style: informationTableColumn },
+                            react_1.default.createElement(components_1.Text, { style: informationTableLabel }, "INVOICE DATE"),
+                            react_1.default.createElement(components_1.Text, { style: informationTableValue }, (0, date_fns_1.format)(date, "dd MMM yyyy"))),
+                        react_1.default.createElement(components_1.Column, { style: informationTableColumn },
+                            react_1.default.createElement(components_1.Text, { style: informationTableLabel }, "ORDER ID"),
+                            react_1.default.createElement(components_1.Link, { style: __assign({}, informationTableValue) }, orderId)))),
+                react_1.default.createElement(components_1.Section, { style: productTitleTable },
+                    react_1.default.createElement(components_1.Text, { style: productsTitle }, "Order Summary")),
                 products.map(function (product) {
                     var _a;
                     var image = product.images[0].image;
-                    return (React.createElement(components_1.Section, { key: product.id },
-                        React.createElement(components_1.Column, { style: { width: "64px" } }, typeof image !== "string" && image.url ? (React.createElement(components_1.Img, { src: image.url, width: "64", height: "64", alt: "Product Image", style: productIcon })) : null),
-                        React.createElement(components_1.Column, { style: { paddingLeft: "22px" } },
-                            React.createElement(components_1.Text, { style: productTitle }, product.name),
-                            product.description ? (React.createElement(components_1.Text, { style: productDescription }, product.description.length > 50
+                    return (react_1.default.createElement(components_1.Section, { key: product.id },
+                        react_1.default.createElement(components_1.Column, { style: { width: "64px" } }, typeof image !== "string" && image.url ? (react_1.default.createElement(components_1.Img, { src: image.url, width: "64", height: "64", alt: "Product Image", style: productIcon })) : null),
+                        react_1.default.createElement(components_1.Column, { style: { paddingLeft: "22px" } },
+                            react_1.default.createElement(components_1.Text, { style: productTitle }, product.name),
+                            product.description ? (react_1.default.createElement(components_1.Text, { style: productDescription }, product.description.length > 50
                                 ? ((_a = product.description) === null || _a === void 0 ? void 0 : _a.slice(0, 50)) + "..."
                                 : product.description)) : null,
-                            React.createElement(components_1.Link, { href: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/thank-you?orderId=").concat(orderId), style: productLink }, "Download Asset")),
-                        React.createElement(components_1.Column, { style: productPriceWrapper, align: "right" },
-                            React.createElement(components_1.Text, { style: productPrice }, (0, utils_1.formatPrice)(product.price)))));
+                            react_1.default.createElement(components_1.Link, { href: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/thank-you?orderId=").concat(orderId), style: productLink }, "Download Asset")),
+                        react_1.default.createElement(components_1.Column, { style: productPriceWrapper, align: "right" },
+                            react_1.default.createElement(components_1.Text, { style: productPrice }, (0, utils_1.formatPrice)(product.price)))));
                 }),
-                React.createElement(components_1.Section, null,
-                    React.createElement(components_1.Column, { style: { width: "64px" } }),
-                    React.createElement(components_1.Column, { style: { paddingLeft: "40px", paddingTop: 20 } },
-                        React.createElement(components_1.Text, { style: productTitle }, "Transaction Fee")),
-                    React.createElement(components_1.Column, { style: productPriceWrapper, align: "right" },
-                        React.createElement(components_1.Text, { style: productPrice }, (0, utils_1.formatPrice)(1)))),
-                React.createElement(components_1.Hr, { style: productPriceLine }),
-                React.createElement(components_1.Section, { align: "right" },
-                    React.createElement(components_1.Column, { style: tableCell, align: "right" },
-                        React.createElement(components_1.Text, { style: productPriceTotal }, "TOTAL")),
-                    React.createElement(components_1.Column, { style: productPriceVerticalLine }),
-                    React.createElement(components_1.Column, { style: productPriceLargeWrapper },
-                        React.createElement(components_1.Text, { style: productPriceLarge }, (0, utils_1.formatPrice)(total)))),
-                React.createElement(components_1.Hr, { style: productPriceLineBottom }),
-                React.createElement(components_1.Text, { style: footerLinksWrapper },
-                    React.createElement(components_1.Link, { href: "#" }, "Account Settings"),
+                react_1.default.createElement(components_1.Section, null,
+                    react_1.default.createElement(components_1.Column, { style: { width: "64px" } }),
+                    react_1.default.createElement(components_1.Column, { style: { paddingLeft: "40px", paddingTop: 20 } },
+                        react_1.default.createElement(components_1.Text, { style: productTitle }, "Transaction Fee")),
+                    react_1.default.createElement(components_1.Column, { style: productPriceWrapper, align: "right" },
+                        react_1.default.createElement(components_1.Text, { style: productPrice }, (0, utils_1.formatPrice)(1)))),
+                react_1.default.createElement(components_1.Hr, { style: productPriceLine }),
+                react_1.default.createElement(components_1.Section, { align: "right" },
+                    react_1.default.createElement(components_1.Column, { style: tableCell, align: "right" },
+                        react_1.default.createElement(components_1.Text, { style: productPriceTotal }, "TOTAL")),
+                    react_1.default.createElement(components_1.Column, { style: productPriceVerticalLine }),
+                    react_1.default.createElement(components_1.Column, { style: productPriceLargeWrapper },
+                        react_1.default.createElement(components_1.Text, { style: productPriceLarge }, (0, utils_1.formatPrice)(total)))),
+                react_1.default.createElement(components_1.Hr, { style: productPriceLineBottom }),
+                react_1.default.createElement(components_1.Text, { style: footerLinksWrapper },
+                    react_1.default.createElement(components_1.Link, { href: "#" }, "Account Settings"),
                     " \u2022",
                     " ",
-                    React.createElement(components_1.Link, { href: "#" }, "Terms of Sale"),
+                    react_1.default.createElement(components_1.Link, { href: "#" }, "Terms of Sale"),
                     " \u2022",
                     " ",
-                    React.createElement(components_1.Link, { href: "#" }, "Privacy Policy ")),
-                React.createElement(components_1.Text, { style: footerCopyright },
+                    react_1.default.createElement(components_1.Link, { href: "#" }, "Privacy Policy ")),
+                react_1.default.createElement(components_1.Text, { style: footerCopyright },
                     "Copyright \u00A9 2023 DigitalHippo Inc. ",
-                    React.createElement("br", null),
+                    react_1.default.createElement("br", null),
                     " ",
-                    React.createElement(components_1.Link, { href: "#" }, "All rights reserved"))))));
+                    react_1.default.createElement(components_1.Link, { href: "#" }, "All rights reserved"))))));
 };
 var ReceiptEmailHtml = function (props) {
-    return (0, components_1.render)(React.createElement(ReceiptEmail, __assign({}, props)), {
+    return (0, components_1.render)(react_1.default.createElement(ReceiptEmail, __assign({}, props)), {
         pretty: true,
     });
 };
